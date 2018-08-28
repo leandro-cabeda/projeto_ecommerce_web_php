@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<style media="screen">
+	.modal {
+		text-align: center;
+		padding: 0!important;
+	}
+
+	.modal:before {
+		content: '';
+		display: inline-block;
+		height: 100%;
+		vertical-align: middle;
+		margin-right: -4px;
+	}
+
+	.modal-dialog {
+		display: inline-block;
+		text-align: left;
+		vertical-align: middle;
+	}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1 class="text-center" style="color: black"><b>Clientes</b></h1>
+		<br/>
+		<button class="btn btn-success btn-lg" id="addCliente" style="font-weight: 600">
+			<i class="glyphicon glyphicon-plus"></i>
+			Adicionar Cliente
+		</button>
+		<br/><br/>
+		<div class="alert alert-success" role="alert" id="msg" style="display:none"></div>
+		<table id="clientes" class="table table-striped table-bordered"  cellspacing="0" width="100%" >
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Nome</th>
+					<th>CPF</th>
+					<th>Email</th>
+					<th>Status</th>
+					<th>Cidade</th>
+					<th>Tipo</th>
+					<th>Opções</th>
+				</tr>
+			</thead>
+		</table>
+	</div>
+
+	<div class="modal fade" id="modal_form" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h3 class="modal-title">Formulário de Clientes</h3>
+				</div>
+				<div class="modal-body form">
+					<form  enctype="multipart/form-data"
+					method="POST" action="#" id="form" class="form-horizontal">
+					<input type="hidden" value="" name="id"/>
+					<div class="form-body">
+						<div class="form-group">
+							<label class="control-label col-md-3">Nome</label>
+							<div class="col-md-9">
+								<input name="nome" placeholder="Nome" class="form-control"
+								required type="text">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-3">CPF</label>
+							<div class="col-md-9">
+								<input name="cpf" placeholder="CPF" class="form-control"
+								required type="text">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-3">Endereço</label>
+							<div class="col-md-9">
+								<input name="endereco" placeholder="Endereço" class="form-control"
+								required type="text">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-3">Email</label>
+							<div class="col-md-9">
+								<input name="email" placeholder="Email" class="form-control"
+								required type="email">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-3">Sexo</label>
+							<div class="col-md-9 radio">
+								Masculino&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" value="M" name="sexo" id="sexo_m">&nbsp;&nbsp;
+								Feminino&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" value="F" name="sexo" id="sexo_f">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-3">Bairro</label>
+							<div class="col-md-9">
+								<input name="bairro" placeholder="Bairro" class="form-control"
+								required type="text">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-3">CEP</label>
+							<div class="col-md-9">
+								<input name="cep" placeholder="cep" class="form-control"
+								required type="text">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-3">Fone1</label>
+							<div class="col-md-9">
+								<input name="fone1" placeholder="Fone1" class="form-control"
+								required type="text">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-3">Fone2</label>
+							<div class="col-md-9">
+								<input name="fone2" placeholder="Fone2" class="form-control" required type="text">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-3">Data Nascimento</label>
+							<div class="col-md-9">
+								<input name="datanasc" placeholder="Data Nascimento" class="form-control"
+								required type="text">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-3">Status</label>
+							<div class="col-md-9 checkbox">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="status" value="A" type="checkbox" checked>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-3">Maladireta</label>
+							<div class="col-md-9 checkbox">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="maladireta" value="S" type="checkbox">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-3">Cidade</label>
+							<div class="col-md-9 cid_id"> </div>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label col-md-3">Tipo</label>
+							<div class="col-md-9 radio">
+								Cliente&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" value="C" name="tipo" id="tipo_c">&nbsp;&nbsp;
+								Funcionário&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" value="F" name="tipo" id="tipo_f">&nbsp;&nbsp;
+								Gerente&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" value="G" name="tipo" id="tipo_g">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label col-md-3">Senha</label>
+							<div class="col-md-9">
+								<input name="senha" id="senha" onkeyup="checarSenha()" placeholder="Senha" class="form-control"
+								required type="password">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label col-md-3">Confirmar Senha</label>
+							<div class="col-md-9">
+								<input name="senha_confirmar" id="senha_confirmar" onkeyup="checarSenha()" placeholder="Confirmar Senha" class="form-control"
+								required type="password">
+							</div>
+						</div>
+
+						<div class="col-md-12 form-group">
+							<div id="divcheck">
+							</div>
+						</div>
+
+					</div>
+					<div class="modal-footer">
+						<button type="submit" id="btnSave" class="btn btn-primary">Salvar</button>
+						<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="myModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title2"></h4>
+			</div>
+			<div class="modal-body">
+				<p id="msgModal"></p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<script src="modulos/clientes/script.js" type="text/javascript"></script>
+
+<script>
+function checarSenha() {
+	var password = $("#senha").val();
+	var confirmPassword = $("#senha_confirmar").val();
+	if (password == '' || '' == confirmPassword) {
+		$("#divcheck").html("<span style='color: red'>Campo de senha vazio!</span>");
+		document.getElementById("btnSave").disabled = true;
+	} else if (password != confirmPassword) {
+		$("#divcheck").html("<span style='color: red'>Senhas não conferem!</span>");
+		document.getElementById("btnSave").disabled = true;
+	} else {
+		$("#divcheck").html("<span style='color: green'>Senha iguais!</span>");
+		document.getElementById("btnSave").disabled = false; } }
+		</script>
+	</body>
+	</html>

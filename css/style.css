@@ -1,0 +1,129 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: Arial, Helvetica, Verdana;
+}
+
+.car_circle{
+	border: 3px solid black;
+	border-radius: 70%;
+	position: absolute;
+	top: 55%;
+	left: 64%;
+	width: 35px;
+	height: 35px;
+	text-align: center;
+	line-height: 28px;
+	font-weight: bold;
+
+	background-color: black;
+	color: white;
+	font-size: 14pt;
+}
+
+.centralizado {
+	margin: 0 auto;
+	float: none;
+}
+
+.console{                                                     /*TITULOS SESSÃO*/
+	width: 100%;
+	font-size: 25px;
+	border-bottom: 2px solid darkgray;
+	text-align: left;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+#im
+{
+margin-top: -12px;
+padding: 0;
+}
+
+#im img
+{
+min-width: 120px;
+min-height: 90px;
+}
+
+.produto {                                     /*TEXTO DA DESCRIÇÃO DO PRODUTO*/
+	min-height: 3em;
+	font-weight: bolder;
+	font-size: 20px;
+}
+
+.img1{                                                       /*IMAGEM PRODUTO */
+	width: 80%;
+}
+
+.menu {
+	margin-left: -15px;
+}
+
+.menu2{
+	margin-right: -20px;
+}
+
+.link2{
+	margin-top: 20px;
+	padding-left: 100px;
+}
+
+.link{
+	margin-top: 20px;
+	margin-bottom: 15px;
+}
+
+#rd li a{
+	color: black;
+	list-style: none;
+	/*text-decoration-style: none;*/
+	text-decoration: none;
+}
+
+#rd li:nth-child(1)
+{
+	margin-left: -50px;
+}
+
+#rd li:nth-child(2)
+{
+	margin-left: -50px;
+}
+
+#rd li:nth-child(3)
+{
+	margin-left: -50px;
+}
+
+.esp
+{
+	background-color: orange;
+	color: darkblue;
+	border: 2px solid orange;
+	border-radius: 13px;
+}
+
+
+/******************************************************************************/
+.comprar {                                                     /*BOTÃO COMPRAR*/
+	width: 70%;
+	color: white;
+	font-size: 14px;
+}
+/******************************************************************************/
+.preco{                                                       /*TEXTO DO PREÇO*/
+	font-size: 18px;
+	font-family: Impact;
+	color: red;
+}
+/******************************************************************************/
+.carrinho{                                                    /*ICONE DO BOTÃO*/
+	width: 24%;
+	height: 24%;
+}
+/******************************************************************************/
+.clear{                                     /* ZERA O FLUTUAMENTO DO CONTEÚDO */
+	clear: both;
+}
